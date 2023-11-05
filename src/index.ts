@@ -1,7 +1,7 @@
 import { Injector, Logger, webpack } from "replugged";
 
 const inject = new Injector();
-const logger = Logger.plugin("PluginTemplate");
+const logger = Logger.plugin("Edited");
 
 export async function start(): Promise<void> {
   const typingMod = await webpack.waitForModule<{
@@ -16,7 +16,11 @@ export async function start(): Promise<void> {
   if (typingMod && getChannelMod) {
     inject.instead(typingMod, "startTyping", ([channel]) => {
       const channelObj = getChannelMod.getChannel(channel);
-      logger.log(`Typing prevented! Channel: #${channelObj?.name ?? "unknown"} (${channel}).`);
+      logger.log(
+        `Typing prevented! Channel: #${
+          channelObj?.name ?? "unknown"
+        } (${channel}).`
+      );
     });
   }
 }
