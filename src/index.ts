@@ -17,8 +17,19 @@ export async function start(): Promise<void> {
         return res;
       }
 
-      return res.then((httpres) => {
-        console.log("Response: ", httpres);
+      return res.then((httpres: HTTPResponse) => {
+        // console.log("Response: ", httpres);
+        const org_content = httpres.body.content;
+        const edited = org_content.indexOf("(edited)");
+        if (edited !== -1) {
+          const msgid = httpres.body.id;
+          const msgchid = httpres.body.channel_id;
+          const content =
+            org_content.slice(0, edited) +
+            "\u202B\u202B" +
+            org_content.slice(edited + "(edited)".length);
+          sendMessageMod.editMessage(msgchid, msgid, { content });
+        }
         return httpres;
       });
     });
