@@ -1,7 +1,7 @@
 {
-  "name": "plugin-template",
-  "version": "1.0.0",
-  "description": "A plugin template",
+  "name": "Replugged-Edited",
+  "version": "0.1.0",
+  "description": "A plugin that brings the discord (edited) glitch to your chatbox",
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
