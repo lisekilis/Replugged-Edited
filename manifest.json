@@ -9,14 +9,12 @@
   },
   "version": "1.0.0",
   "updater": {
-    "type": "github",
+    "type": "store",
     "id": "lisekilis/Replugged-Edited"
   },
   "license": "MIT",
   "type": "replugged-plugin",
   "renderer": "src/index.ts",
   "source": "https://github.com/lisekilis/Replugged-Edited",
-  "image": [
-    "https://i.imgur.com/14CNs3a.png?CHANGE-THIS-URL"
-  ]
+  "image": ["https://i.imgur.com/jCf8yYh.png"]
 }
