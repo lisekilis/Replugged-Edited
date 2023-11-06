@@ -10,13 +10,11 @@
   "version": "1.0.1",
   "updater": {
     "type": "store",
-    "id": "lisekilis/Replugged-Edited"
+    "id": "dev.lisekilis.RepluggedEdited"
   },
   "license": "MIT",
   "type": "replugged-plugin",
   "renderer": "src/index.ts",
   "source": "https://github.com/lisekilis/Replugged-Edited",
-  "image": [
-    "https://i.imgur.com/jCf8yYh.png"
-  ]
+  "image": ["https://i.imgur.com/jCf8yYh.png"]
 }
