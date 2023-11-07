@@ -16,7 +16,5 @@
   "type": "replugged-plugin",
   "renderer": "src/index.ts",
   "source": "https://github.com/lisekilis/Replugged-Edited",
-  "image": [
-    "https://i.imgur.com/jCf8yYh.png"
-  ]
+  "image": ["https://i.imgur.com/fqIBvOH.gif"]
 }
