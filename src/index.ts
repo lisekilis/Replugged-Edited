@@ -1,7 +1,10 @@
-import { Injector, Logger, webpack } from "replugged";
+import { common, Injector, Logger, webpack } from "replugged";
+import { Messages } from "replugged/dist/renderer/modules/common/i18n";
 
 const inject = new Injector();
 const logger = Logger.plugin("Edited");
+const messages = common;
+const { waitForProps } = webpack;
 
 export async function start(): Promise<void> {
   const messages = await webpack.waitForProps<{
