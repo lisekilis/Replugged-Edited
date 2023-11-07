@@ -1,17 +1,19 @@
-import { Injector, Logger, webpack } from "replugged";
+import { common, Injector, Logger, webpack } from "replugged";
+import { Messages } from "replugged/dist/renderer/modules/common/i18n";
 
 const inject = new Injector();
 const logger = Logger.plugin("Edited");
+const messages = common;
 
 export async function start(): Promise<void> {
-  const sendMessageMod = await webpack.waitForProps<{
+  const messages = await webpack.waitForProps<{
     sendMessage: (id: string) => {
       name: string;
     };
   }>("sendMessage");
 
-  if (sendMessageMod) {
-    inject.after(sendMessageMod, "sendMessage", (args, res) => {
+  if (messages) {
+    inject.after(messages, "sendMessage", (args, res) => {
       if (!(res instanceof Promise)) {
         logger.log("Not a Promise");
         return res;
@@ -27,7 +29,7 @@ export async function start(): Promise<void> {
           const content = `${org_content.slice(0, edited)}\u202B\u202B${org_content.slice(
             edited + "(edited)".length,
           )}`;
-          sendMessageMod.editMessage(msgchid, msgid, { content });
+          messages.editMessage(msgchid, msgid, { content });
         }
         return httpres;
       });
