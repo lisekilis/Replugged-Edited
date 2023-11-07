@@ -13,7 +13,8 @@ export async function start(): Promise<void> {
   }>("sendMessage");
 
   if (messages) {
-    inject.after(messages, "sendMessage", (args, res) => {
+    inject.after(messages, "sendMessage", (_args, res) => {
+      //this errors fro some reason but works
       if (!(res instanceof Promise)) {
         logger.log("Not a Promise");
         return res;
@@ -36,7 +37,7 @@ export async function start(): Promise<void> {
     });
   }
 }
-
+// note: the code above was made bu a incredibly stupid person(me) on his first time using typescript
 export function stop(): void {
   inject.uninjectAll();
 }
