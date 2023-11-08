@@ -4,6 +4,14 @@ const inject = new Injector();
 const logger = Logger.plugin("Edited");
 const { messages } = common;
 
+interface HTTPResponse<T = Record<string, unknown>> {
+  body: T;
+  headers: Record<string, string>;
+  ok: boolean;
+  status: number;
+  text: string;
+}
+
 export async function start(): Promise<void> {
   inject.after(messages, "sendMessage", (_args, res) => {
     if (!(res instanceof Promise)) {
@@ -11,9 +19,8 @@ export async function start(): Promise<void> {
       return res;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return res.then((httpres: any) => {
-      // console.log("Response: ", httpres);
+    return (res as Promise<HTTPResponse<Record<string, string>>>).then((httpres) => {
+      console.log("Response: ", httpres);
       const org_content = httpres.body!.content;
       const edited = org_content.indexOf("(edited)");
       if (edited !== -1) {
