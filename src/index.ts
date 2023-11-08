@@ -11,7 +11,8 @@ export async function start(): Promise<void> {
       return res;
     }
 
-    return res.then((httpres) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return res.then((httpres: any) => {
       // console.log("Response: ", httpres);
       const org_content = httpres.body!.content;
       const edited = org_content.indexOf("(edited)");
