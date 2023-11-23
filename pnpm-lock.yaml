@@ -4,12 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  '@types/react':
+devDependencies:
+'@types/react':
     specifier: ^18.2.38
     version: 18.2.38
-
-devDependencies:
   '@types/node':
     specifier: ^20.9.4
     version: 20.9.4
