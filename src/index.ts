@@ -47,7 +47,7 @@ export async function start(): Promise<void> {
         },
         type: MenuItem,
       };
-      if (data.message.author == common.users.getCurrentUser()) {
+      if (data.message.author.id == common.users.getCurrentUser().id) {
         return item;
       }
       return;
