@@ -35,7 +35,7 @@ export async function start(): Promise<void> {
     ContextMenuTypes.Message,
     (data: {
       channel: { id: string };
-      message: { id: string; content: string; author: string };
+      message: { id: string; content: string; author: { id: string } };
     }) => {
       const item = {
         id: "Edited",
@@ -59,6 +59,17 @@ export async function start(): Promise<void> {
     return (res as Promise<HTTPResponse<Record<string, string>>>).then((httpres) => {
       return editMessage(httpres.body.channel_id, httpres.body.id, httpres.body.content);
     });
+  });
+  inject.before(messages, "editMessage", (args) => {
+    const orgContent = args[2].content;
+    const edited = orgContent.indexOf(key);
+    if (edited !== -1) {
+      const content = `${orgContent.slice(0, edited)}\u202B\u202B${orgContent.slice(
+        edited + key.length,
+      )}`;
+      args[2].content = content;
+    }
+    return args;
   });
 }
 
