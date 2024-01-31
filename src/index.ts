@@ -33,7 +33,10 @@ function editMessage(msgchid: string, msgid: string, orgContent: string) {
 export async function start(): Promise<void> {
   inject.utils.addMenuItem(
     ContextMenuTypes.Message,
-    (data) => {
+    (data: {
+      channel: { id: string };
+      message: { id: string; content: string; author: string };
+    }) => {
       const item = {
         id: "Edited",
         label: "(Edit) Message",
