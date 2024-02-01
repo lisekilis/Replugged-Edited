@@ -1,4 +1,4 @@
-import { Injector, common, components, types } from "replugged";
+import { Injector, common, components, types, util } from "replugged";
 import { cfg } from "./config";
 
 export * from "./settings";
@@ -64,7 +64,7 @@ export async function start(): Promise<void> {
       checked: toggle,
       action: () => {
         cfg.set("toggle", !toggle);
-        common.contextMenu.close();
+        util.forceUpdateElement("[id=textarea-context]");
       },
       type: MenuCheckboxItem,
     };
