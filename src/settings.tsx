@@ -7,7 +7,6 @@ const cfg = await settings.init("dev.lisekilis.RepluggedEdited");
 export function Settings(): React.ReactElement {
   return (
     <>
-      <div></div>
       <Text.H1>The key that gets replaced:</Text.H1>
       <TextInput {...util.useSetting(cfg, "key", "(edited)")} />
     </>
