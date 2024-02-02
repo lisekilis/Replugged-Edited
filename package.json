@@ -1,6 +1,6 @@
 {
   "name": "Replugged-Edited",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "description": "A plugin that brings the discord (edited) glitch to your chatbox",
   "engines": {
     "node": ">=18.0.0",
@@ -23,7 +23,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.9.4",
+    "@types/node": "20",
     "@types/react": "^18.2.38",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
