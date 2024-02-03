@@ -73,11 +73,11 @@ export async function start(): Promise<void> {
 
   inject.after(messages, "sendMessage", (_args, res) => {
     const toggle = cfg.get("toggle", true);
-    return (res as Promise<HTTPResponse<Record<string, string>>>).then((httpres) => {
-      if (toggle) {
-        return editMessage(httpres.body.channel_id, httpres.body.id, httpres.body.content);
-      }
-    });
+    if (toggle) {
+      return (res as Promise<HTTPResponse<Record<string, string>>>).then(async (httpres) => {
+        await editMessage(httpres.body.channel_id, httpres.body.id, httpres.body.content);
+      });
+    }
   });
   inject.before(messages, "editMessage", (args) => {
     const toggle = cfg.get("toggle", true);
