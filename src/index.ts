@@ -95,7 +95,7 @@ export async function start(): Promise<void> {
   });
 }
 
-// note: the code above was made bu a incredibly stupid person(me) on his first time using typescript
+// note: the code above was made by an incredibly stupid person(me) on his first time using typescript
 export function stop(): void {
   inject.uninjectAll();
 }
