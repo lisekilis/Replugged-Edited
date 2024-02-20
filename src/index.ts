@@ -76,8 +76,10 @@ export async function start(): Promise<void> {
     if (toggle) {
       return (res as Promise<HTTPResponse<Record<string, string>>>).then(async (httpres) => {
         await editMessage(httpres.body.channel_id, httpres.body.id, httpres.body.content);
+        return httpres;
       });
     }
+    return res;
   });
   inject.before(messages, "editMessage", (args) => {
     const toggle = cfg.get("toggle", true);
